@@ -191,3 +191,51 @@ int libUSB_bulk_transfer(struct libusb_device_handle *dev_handle, unsigned char 
     printf("[libUSB/%lu] libusb_bulk_transfer --> retval = %d\n", pthread_self(), retval);
     return retval;
 }
+
+
+
+
+// NEW
+
+int libUSB_get_port_numbers(libusb_device *dev, uint8_t* port_numbers, int port_numbers_len) {
+    return libusb_get_port_numbers(dev, port_numbers, port_numbers_len);
+}
+
+void libUSB_set_debug(libusb_context *ctx, int level) {
+    libusb_set_debug(ctx, level);
+}
+
+int libUSB_submit_transfer(struct libUSB_transfer *transfer) {
+    return libusb_submit_transfer(transfer);
+}
+
+int libUSB_cancel_transfer(struct libUSB_transfer *transfer) {
+    return libusb_cancel_transfer(transfer);
+}
+
+void libUSB_free_transfer(struct libUSB_transfer *transfer) {
+    libusb_free_transfer(transfer);
+}
+
+struct libusb_transfer * libUSB_alloc_transfer(int iso_packets) {
+    return libusb_alloc_transfer(iso_packets);
+}
+
+int libUSB_handle_events_timeout(libusb_context *ctx,
+        struct timeval *tv) {
+    return libusb_handle_events_timeout(ctx, tv);
+}
+
+int libUSB_handle_events(libusb_context *ctx) {
+    return libusb_handle_events(ctx);
+}
+
+int libUSB_handle_events_completed(libusb_context *ctx, int *completed) {
+    return libusb_handle_events_completed(ctx, completed);
+}
+
+int libUSB_open(libusb_device *dev, libusb_device_handle **dev_handle) {
+    return libusb_open(dev, dev_handle);
+}
+
+
