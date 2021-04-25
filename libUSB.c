@@ -202,44 +202,68 @@ int libUSB_bulk_transfer(struct libusb_device_handle *dev_handle, unsigned char 
 // NEW
 
 int libUSB_get_port_numbers(libusb_device *dev, uint8_t* port_numbers, int port_numbers_len) {
-    return libusb_get_port_numbers(dev, port_numbers, port_numbers_len);
+    printf("[libUSB/%lu] libusb_get_port_numbers(dev = %p, port_numbers = %p, port_numbers_len = %u\n", pthread_self(), dev, port_numbers, port_numbers_len);
+    int retval = libusb_get_port_numbers(dev, port_numbers, port_numbers_len);
+    printf("[libUSB/%lu] libusb_get_port_numbers --> retval = %d\n", pthread_self(), retval);
+    return retval;
 }
 
 void libUSB_set_debug(libusb_context *ctx, int level) {
+    printf("[libUSB/%lu] libUSB_set_debug(ctx = %p, level = %u\n", pthread_self(), ctx, level);
     libusb_set_debug(ctx, level);
 }
 
 int libUSB_submit_transfer(struct libUSB_transfer *transfer) {
-    return libusb_submit_transfer((struct libusb_transfer*)transfer);
+    printf("[libUSB/%lu] libUSB_submit_transfer(transfer = %p\n", pthread_self(), transfer);
+    int retval = libusb_submit_transfer((struct libusb_transfer*)transfer);
+    printf("[libUSB/%lu] libUSB_submit_transfer --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 int libUSB_cancel_transfer(struct libUSB_transfer *transfer) {
-    return libusb_cancel_transfer((struct libusb_transfer*)transfer);
+    printf("[libUSB/%lu] libUSB_cancel_transfer(transfer = %p\n", pthread_self(), transfer);
+    int retval = libusb_cancel_transfer((struct libusb_transfer*)transfer);
+    printf("[libUSB/%lu] libUSB_cancel_transfer --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 void libUSB_free_transfer(struct libUSB_transfer *transfer) {
+    printf("[libUSB/%lu] libUSB_free_transfer(transfer = %p\n", pthread_self(), transfer);
     libusb_free_transfer((struct libusb_transfer*)transfer);
 }
 
 struct libUSB_transfer * libUSB_alloc_transfer(int iso_packets) {
-    return (struct libUSB_transfer*)libusb_alloc_transfer(iso_packets);
+    printf("[libUSB/%lu] libUSB_alloc_transfer(iso_packets = %u\n", pthread_self(), iso_packets);
+    struct libUSB_transfer* retval = (struct libUSB_transfer*)libusb_alloc_transfer(iso_packets);
+    printf("[libUSB/%lu] libUSB_alloc_transfer --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 int libUSB_handle_events_timeout(libusb_context *ctx,
         struct timeval *tv) {
-    return libusb_handle_events_timeout(ctx, tv);
+    printf("[libUSB/%lu] libUSB_handle_events_timeout(ctx = %p, tv = %p)\n", pthread_self(), ctx, tv);
+    int retval = libusb_handle_events_timeout(ctx, tv);
+    printf("[libUSB/%lu] libUSB_handle_events_timeout --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 int libUSB_handle_events(libusb_context *ctx) {
-    return libusb_handle_events(ctx);
+    printf("[libUSB/%lu] libUSB_handle_events(ctx = %p)\n", pthread_self(), ctx);
+    int retval = libusb_handle_events(ctx);
+    printf("[libUSB/%lu] libUSB_handle_events --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 int libUSB_handle_events_completed(libusb_context *ctx, int *completed) {
-    return libusb_handle_events_completed(ctx, completed);
+    printf("[libUSB/%lu] libUSB_handle_events_completed(ctx = %p, completed = %p)\n", pthread_self(), ctx, completed);
+    int retval = libusb_handle_events_completed(ctx, completed);
+    printf("[libUSB/%lu] libUSB_handle_events_completed --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
 
 int libUSB_open(libusb_device *dev, libusb_device_handle **dev_handle) {
-    return libusb_open(dev, dev_handle);
+    printf("[libUSB/%lu] libUSB_open(dev = %p, dev_handle = %p)\n", pthread_self(), dev, dev_handle);
+    int retval = libusb_open(dev, dev_handle);
+    printf("[libUSB/%lu] libUSB_open --> retval = %p\n", pthread_self(), retval);
+    return retval;
 }
-
-

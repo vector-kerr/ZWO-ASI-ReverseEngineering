@@ -1,6 +1,9 @@
 
-CFLAGS   = -W -Wall -O3 -std=c99
-CXXFLAGS = -W -Wall -O3 -std=c++11
+# CFLAGS   = -W -Wall -O3 -std=c99
+# CXXFLAGS = -W -Wall -O3 -std=c++11
+
+CFLAGS   = -W -Wall -std=c99
+CXXFLAGS = -W -Wall -std=c++11
 
 .PHONY : clean default
 
