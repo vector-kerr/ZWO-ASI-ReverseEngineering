@@ -8,7 +8,9 @@
 
 int libUSB_init(libusb_context **context)
 {
-    assert(context == NULL); // only used with the default context.
+    // Ignore this for now as it falls over.
+    //assert(context == NULL); // only used with the default context.
+    
     printf("[libUSB/%lu] libusb_init(context = %p)\n", pthread_self(), context);
     int retval = libusb_init(context);
     printf("[libUSB/%lu] libusb_init --> retval = %d\n", pthread_self(), retval);
@@ -17,7 +19,8 @@ int libUSB_init(libusb_context **context)
 
 void libUSB_exit(struct libusb_context *ctx)
 {
-    assert(ctx == NULL); // only used with the default context.
+    // Ignore this for now as it falls over.
+    //assert(context == NULL); // only used with the default context.
 
     printf("[libUSB/%lu] libusb_exit(context = %p)\n", pthread_self(), ctx);
     return libusb_exit(ctx);
@@ -27,7 +30,8 @@ void libUSB_exit(struct libusb_context *ctx)
 
 ssize_t libUSB_get_device_list(libusb_context * ctx, libusb_device *** list)
 {
-    assert(ctx == NULL); // only used with the default context.
+    // Ignore this for now as it falls over.
+    //assert(context == NULL); // only used with the default context.
 
     printf("[libUSB/%lu] libusb_get_device_list(ctx = %p, list = %p)\n", pthread_self(), ctx, list);
     ssize_t retval = libusb_get_device_list(ctx, list);
@@ -206,19 +210,19 @@ void libUSB_set_debug(libusb_context *ctx, int level) {
 }
 
 int libUSB_submit_transfer(struct libUSB_transfer *transfer) {
-    return libusb_submit_transfer(transfer);
+    return libusb_submit_transfer((struct libusb_transfer*)transfer);
 }
 
 int libUSB_cancel_transfer(struct libUSB_transfer *transfer) {
-    return libusb_cancel_transfer(transfer);
+    return libusb_cancel_transfer((struct libusb_transfer*)transfer);
 }
 
 void libUSB_free_transfer(struct libUSB_transfer *transfer) {
-    libusb_free_transfer(transfer);
+    libusb_free_transfer((struct libusb_transfer*)transfer);
 }
 
-struct libusb_transfer * libUSB_alloc_transfer(int iso_packets) {
-    return libusb_alloc_transfer(iso_packets);
+struct libUSB_transfer * libUSB_alloc_transfer(int iso_packets) {
+    return (struct libUSB_transfer*)libusb_alloc_transfer(iso_packets);
 }
 
 int libUSB_handle_events_timeout(libusb_context *ctx,

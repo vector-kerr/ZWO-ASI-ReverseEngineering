@@ -48,7 +48,7 @@ int libusb_open(libusb_device *dev, libusb_device_handle **dev_handle);
 
 
 struct libUSB_transfer {
-    libusb_transfer content;
+    struct libusb_transfer content;
 };
 
 

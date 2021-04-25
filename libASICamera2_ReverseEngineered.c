@@ -224,14 +224,23 @@ ASI_ERROR_CODE ASIGetDroppedFrames(int iCameraID, int * piDropFrames)
     return ASI_SUCCESS;
 }
 
-ASI_ERROR_CODE ASIEnableDarkSubtract(int iCameraID, char * pcBMPPath, ASI_BOOL * bIsSubDarkWorking)
-{
+// ASI_ERROR_CODE ASIEnableDarkSubtract(int iCameraID, char * pcBMPPath, ASI_BOOL * bIsSubDarkWorking)
+// {
+//     (void)iCameraID; // unused
+//     (void)pcBMPPath; // unused
+//     (void)bIsSubDarkWorking; // unused
+
+//     return ASI_SUCCESS;
+// }
+
+ASI_ERROR_CODE ASIEnableDarkSubtract(int iCameraID, char *pcBMPPath) {
     (void)iCameraID; // unused
     (void)pcBMPPath; // unused
-    (void)bIsSubDarkWorking; // unused
 
     return ASI_SUCCESS;
 }
+
+
 
 ASI_ERROR_CODE ASIDisableDarkSubtract(int iCameraID)
 {
