@@ -10,3 +10,6 @@ libUSB.o
 usb_control_transfer.log
 libASICamera2_ReverseEngineered.o
 releases
+
+test_gui2_snap
+
