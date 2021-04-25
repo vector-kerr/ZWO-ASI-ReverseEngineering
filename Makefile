@@ -32,6 +32,7 @@ libUSB.o : libUSB.c
 libASICamera2_ReverseEngineered.o : libASICamera2_ReverseEngineered.c
 
 libASICamera2_patched.a : libASICamera2.a
+	python3 patch-library.py libASICamera2.a
 
 clean :
 	$(RM) asi-test-ORIG asi-test-RE asi-test asi-test-c-compatibility
